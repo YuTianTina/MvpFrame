@@ -8,5 +8,4 @@ package com.study.studybase.`interface`
  * @author yutt
  */
 interface IBaseView {
-    fun showLoading()
 }

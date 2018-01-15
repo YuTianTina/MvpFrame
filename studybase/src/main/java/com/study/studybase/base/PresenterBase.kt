@@ -10,7 +10,7 @@ import com.study.studybase.`interface`.IBaseView
  * Description: 基础P层
  * @author yutt
  */
-class PresenterBase<in T : IBaseView> : IBasePresenter<T> {
+open class PresenterBase<in T : IBaseView> : IBasePresenter<T> {
     private var baseView : T ? = null
 
     override fun attachView(view: T) {
@@ -21,7 +21,7 @@ class PresenterBase<in T : IBaseView> : IBasePresenter<T> {
         this.baseView = null
     }
 
-    fun isViewAttach (): Boolean{
+    private fun isViewAttach (): Boolean{
         return null == baseView
     }
 
