@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.annotation.DrawableRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
+import android.support.v4.app.FragmentManager
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
@@ -14,11 +15,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.study.studybase.R
 import com.study.studybase.`interface`.IBaseView
+import com.study.studybase.communication.FunctionManager
 
 /**
  *
  * 2018/1/15
- * e-mail: yutt@xinguangnet.com
  * Description: 基类Activity
  * @author yutt
  */
@@ -145,4 +146,18 @@ abstract class AbstractActivityBase : AppCompatActivity(), IBaseView, View.OnCli
             }
         }
     }
+
+    /**
+     * 通信绑定
+     */
+    fun bindFragmentCommunity(fragmentTag : String){
+        val fm : FragmentManager = supportFragmentManager
+        val fragmentBase : AbstractFragmentBase? = fm.findFragmentByTag(fragmentTag) as? AbstractFragmentBase
+        voidFragmentCommunity(fragmentBase?.functionManager!!)
+    }
+
+    /**
+     * 通信处理
+     */
+    abstract fun voidFragmentCommunity(functionManager: FunctionManager)
 }
